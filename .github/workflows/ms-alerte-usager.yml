@@ -1,0 +1,92 @@
+name: MS Alerte Usager - CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths: [ 'ms-alerte-usager/**' ]
+  pull_request:
+    branches: [ main ]
+    paths: [ 'ms-alerte-usager/**' ]
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    env:
+      PYTHON_VERSION: "3.12"
+
+    steps:
+      - name: Checkout monorepo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ==================== 1. INSTALL ====================
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          cd ms-alerte-usager
+          pip install -r requirements.txt -r requirements-dev.txt
+
+      # ==================== 2. TEST (C17) ====================
+      - name: Run tests + coverage
+        run: |
+          cd ms-alerte-usager
+          pytest --junitxml=report_tests.xml --cov=. --cov-report=xml --cov-report=html
+        working-directory: .
+
+      # ==================== 3. QUALITY (C18 + C19) ====================
+      - name: Lint flake8
+        run: |
+          cd ms-alerte-usager
+          flake8 src tests --config=.flake8
+
+      - name: SonarQube Scan (obligatoire)
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=urbanhub-ms-alerte-usager
+            -Dsonar.projectName="MS Alerte Usager"
+            -Dsonar.sources=ms-alerte-usager/src
+            -Dsonar.tests=ms-alerte-usager/tests
+            -Dsonar.python.coverage.reportPaths=ms-alerte-usager/coverage.xml
+            -Dsonar.python.flake8.reportPaths=ms-alerte-usager/flake8-report.txt
+
+      - name: Snyk Security Scan (obligatoire)
+        uses: snyk/actions/python@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --file=ms-alerte-usager/requirements.txt --severity-threshold=high --fail-on=all
+
+      # ==================== 4. BUILD & PUSH (C16) ====================
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./ms-alerte-usager
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/urbanhub/ms-alerte-usager:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/urbanhub/ms-alerte-usager:latest
+
+      # ==================== 5. DEPLOY STAGING (C16) ====================
+      - name: Deploy to staging + healthcheck
+        run: |
+          docker compose up -d --build ms-alerte-usager
+          sleep 15
+          curl -f http://localhost:8004/health || (echo "Healthcheck failed" && exit 1)
+        env:
+          COMPOSE_PROJECT_NAME: urbanhub-staging
