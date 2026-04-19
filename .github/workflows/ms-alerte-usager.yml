@@ -12,7 +12,7 @@ jobs:
   quality-gate:
     runs-on: ubuntu-latest
     env:
-      PYTHON_VERSION: "3.12"
+      PYTHON_VERSION: "3.12.3"
       PYTHONPATH: ${{ github.workspace }}/ms-alerte-usager
     defaults:
       run:
