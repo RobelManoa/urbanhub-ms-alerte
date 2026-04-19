@@ -1,0 +1,52 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ms-alerte-usager/.venv/
+ms-alerte-usager/venv/
+
+# Build and packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test, lint and coverage artifacts
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+report_tests.xml
+flake8-report.txt
+.pyre/
+
+# Logs and runtime files
+*.log
+*.pid
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Project-specific generated files
+ms-alerte-usager/.pytest_cache/

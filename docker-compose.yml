@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: urbanhub-db
+    environment:
+      POSTGRES_DB: alerts
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d alerts"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: urbanhub-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ms-alerte-usager:
+    build:
+      context: ./ms-alerte-usager
+    container_name: ms-alerte-usager
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://user:password@db:5432/alerts
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_QUEUE: alert_queue
+    command: ["python", "src/main.py"]
+    restart: unless-stopped
