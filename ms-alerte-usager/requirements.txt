@@ -1,0 +1,16 @@
+pika
+psycopg2-binary
+sqlalchemy
+sqlalchemy-utils
+alembic
+python-dotenv
+pytest
+pytest-cov
+pytest-mock
+requests
+flask
+flask-cors
+flask-jwt-extended
+flask-sqlalchemy
+flask-migrate
+gunicorn   

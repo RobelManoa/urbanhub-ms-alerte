@@ -1,0 +1,41 @@
+@startuml ER_Alert_Service
+
+entity User {
+  +id : UUID <<PK>>
+  email : string
+  phone : string
+  preferences : json
+  created_at : datetime
+}
+
+entity Alert {
+  +id : UUID <<PK>>
+  type : string
+  message : string
+  severity : string
+  source : string
+  created_at : datetime
+}
+
+entity Notification {
+  +id : UUID <<PK>>
+  alert_id : UUID <<FK>>
+  user_id : UUID <<FK>>
+  channel : string
+  status : string
+  sent_at : datetime
+}
+
+entity EventLog {
+  +id : UUID <<PK>>
+  event_type : string
+  payload : json
+  status : string
+  processed_at : datetime
+}
+
+User ||--o{ Notification : reçoit
+Alert ||--o{ Notification : génère
+Alert ||--o{ EventLog : trace
+
+@enduml
