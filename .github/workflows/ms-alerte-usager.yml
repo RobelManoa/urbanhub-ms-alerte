@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHON_VERSION: "3.12"
+      PYTHONPATH: ${{ github.workspace }}/ms-alerte-usager
+    defaults:
+      run:
+        working-directory: ms-alerte-usager
 
     steps:
       - name: Checkout monorepo
@@ -27,18 +31,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd ms-alerte-usager
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
 
       - name: Run tests + coverage
         run: |
-          cd ms-alerte-usager
           pytest test/unit --junitxml=report_tests.xml --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing --cov-fail-under=80
 
       - name: Lint flake8
         run: |
-          cd ms-alerte-usager
           flake8 src test --config=.flake8 --output-file=flake8-report.txt
 
       - name: SonarQube Scan
