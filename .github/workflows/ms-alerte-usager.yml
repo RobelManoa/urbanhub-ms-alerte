@@ -43,10 +43,10 @@ jobs:
           flake8 src test --config=.flake8 --output-file=flake8-report.txt
 
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_HOST_URL: ${{ startsWith(secrets.SONAR_HOST_URL, 'http') && secrets.SONAR_HOST_URL || 'https://sonarcloud.io' }}
         with:
           projectBaseDir: ms-alerte-usager
 
