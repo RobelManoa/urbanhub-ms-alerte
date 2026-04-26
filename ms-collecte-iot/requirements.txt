@@ -1,0 +1,5 @@
+pika
+pymongo
+pytest
+pytest-cov
+pytest-mock

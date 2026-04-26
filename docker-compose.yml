@@ -14,6 +14,21 @@ services:
       timeout: 5s
       retries: 10
 
+  analysis-db:
+    image: postgres:16-alpine
+    container_name: urbanhub-analysis-db
+    environment:
+      POSTGRES_DB: analysis
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5436:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d analysis"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   rabbitmq:
     image: rabbitmq:3.13-management
     container_name: urbanhub-rabbitmq
@@ -22,6 +37,30 @@ services:
       - "15672:15672"
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mongodb:
+    image: mongo:7
+    container_name: urbanhub-mongodb
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD-SHELL", "grep -qx 'mongod' /proc/1/comm"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  journalisation-db:
+    image: mongo:7
+    container_name: urbanhub-journalisation-db
+    environment:
+      MONGO_INITDB_DATABASE: journalisation
+    ports:
+      - "27018:27017"
+    healthcheck:
+      test: ["CMD-SHELL", "grep -qx 'mongod' /proc/1/comm"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -39,5 +78,59 @@ services:
       DATABASE_URL: postgresql://user:password@db:5432/alerts
       RABBITMQ_HOST: rabbitmq
       RABBITMQ_QUEUE: alert_queue
+    command: ["python", "src/main.py"]
+    restart: unless-stopped
+
+  ms-collecte-iot:
+    build:
+      context: ./ms-collecte-iot
+    container_name: ms-collecte-iot
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017
+      MONGODB_DATABASE: urbanhub
+      MONGODB_COLLECTION: iot_collecte
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_INPUT_QUEUE: iot_raw_queue
+      RABBITMQ_OUTPUT_QUEUE: collecte_queue
+    command: ["python", "src/main.py"]
+    restart: unless-stopped
+
+  ms-analyse:
+    build:
+      context: ./ms-analyse
+    container_name: ms-analyse
+    depends_on:
+      analysis-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "8003:8003"
+    environment:
+      DATABASE_URL: postgresql://user:password@analysis-db:5432/analysis
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_INPUT_QUEUE: collecte_queue
+      ENABLE_RABBITMQ_CONSUMER: "true"
+    command: ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8003"]
+    restart: unless-stopped
+
+  ms-journalisation:
+    build:
+      context: ./ms-journalisation
+    container_name: ms-journalisation
+    depends_on:
+      journalisation-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      MONGODB_URI: mongodb://journalisation-db:27017
+      MONGODB_DATABASE: journalisation
+      RABBITMQ_HOST: rabbitmq
     command: ["python", "src/main.py"]
     restart: unless-stopped
