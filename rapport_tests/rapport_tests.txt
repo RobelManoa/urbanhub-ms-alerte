@@ -1,0 +1,168 @@
+Rapport global des tests UrbanHub
+Date: 2026-04-26T23:28:26+04:00
+
+[ms-alerte-usager] exit_code=0
+=== ms-alerte-usager ===
+........                                                                 [100%]
+
+[ms-analyse] exit_code=0
+=== ms-analyse ===
+................                                                         [100%]
+=============================== warnings summary ===============================
+tests/test_health.py::test_traffic_analysis_returns_dashboard_and_outputs
+tests/test_health.py::test_dashboard_endpoint_returns_latest_analysis
+tests/test_repository.py::test_repository_saves_and_lists_recent_records
+tests/test_repository.py::test_repository_saves_and_lists_recent_records
+  /media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/.venv/lib/python3.12/site-packages/sqlalchemy/sql/schema.py:3624: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+16 passed, 4 warnings in 2.83s
+
+[ms-collecte-iot] exit_code=0
+=== ms-collecte-iot ===
+.................                                                        [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name                                                                                                                                   Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-alerte-usager/src/__init__.py                                       0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-alerte-usager/src/adapters/database/models.py                      53      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-alerte-usager/src/adapters/database/repository.py                  16      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-alerte-usager/src/adapters/rabbitmq/consumer.py                    26      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-alerte-usager/src/application/process_alert_usecase.py             15      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-alerte-usager/src/domain/entities.py                                9      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-alerte-usager/src/main.py                                          23     23     0%   2-31
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-alerte-usager/src/ports/notification_port.py                        6      1    83%   11
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-alerte-usager/src/ports/repository_port.py                         12      3    75%   11, 15, 19
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/__init__.py                                             0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/__init__.py                                    0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/api/__init__.py                                0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/api/schemas.py                                15      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/dashboard/__init__.py                          0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/database/__init__.py                           0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/database/models.py                            16      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/database/repository.py                        22      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/rabbitmq/__init__.py                           0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/rabbitmq/consumer.py                          27      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/adapters/rabbitmq/publisher.py                         23      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/application/__init__.py                                 0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/application/use_cases/__init__.py                       0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/application/use_cases/analyze_traffic_use_case.py      14      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/domain/__init__.py                                      0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/domain/entities.py                                     14      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/domain/services.py                                     43      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/main.py                                                36      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/ports/__init__.py                                       0      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/ports/analysis_port.py                                  4      4     0%   1-7
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/ports/dashboard_repository_port.py                      4      0   100%
+/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-analyse/src/ports/publisher_port.py                                 3      0   100%
+src/__init__.py                                                                                                                            0      0   100%
+src/adapters/__init__.py                                                                                                                   0      0   100%
+src/adapters/database/__init__.py                                                                                                          0      0   100%
+src/adapters/database/repository.py                                                                                                        8      0   100%
+src/adapters/rabbitmq/__init__.py                                                                                                          0      0   100%
+src/adapters/rabbitmq/consumer.py                                                                                                         27      0   100%
+src/adapters/rabbitmq/publisher.py                                                                                                        20      0   100%
+src/application/__init__.py                                                                                                                0      0   100%
+src/application/normalize_iot_data_usecase.py                                                                                             36      0   100%
+src/domain/__init__.py                                                                                                                     0      0   100%
+src/domain/entities.py                                                                                                                    26      0   100%
+src/main.py                                                                                                                               23      1    96%   38
+src/ports/__init__.py                                                                                                                      0      0   100%
+src/ports/event_consumer_port.py                                                                                                           5      0   100%
+src/ports/publisher_port.py                                                                                                                6      0   100%
+src/ports/repository_port.py                                                                                                               6      0   100%
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                                                                    538     32    94%
+Required test coverage of 90% reached. Total coverage: 94.05%
+
+[ms-journalisation] exit_code=1
+=== ms-journalisation ===
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: /media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-journalisation
+configfile: pytest.ini
+plugins: anyio-4.13.0, mock-3.15.1, cov-7.1.0
+collected 48 items / 1 error
+
+tests/unit/application/test_process_log_use_case.py ................     [ 33%]
+tests/unit/domain/test_log.py ............                               [ 58%]
+tests/unit/ports/test_ports.py .................                         [ 93%]
+tests/unit/test_main.py FFF                                              [100%]
+
+==================================== ERRORS ====================================
+____________ ERROR collecting tests/unit/adapters/test_adapters.py _____________
+ImportError while importing test module '/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-journalisation/tests/unit/adapters/test_adapters.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/unit/adapters/test_adapters.py:7: in <module>
+    from src.adapters.rabbitmq.log_consumer_adapter import MockLogConsumer
+E   ImportError: cannot import name 'MockLogConsumer' from 'src.adapters.rabbitmq.log_consumer_adapter' (/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-journalisation/src/adapters/rabbitmq/log_consumer_adapter.py)
+=================================== FAILURES ===================================
+_________________________ TestMain.test_main_execution _________________________
+/usr/lib/python3.12/unittest/mock.py:1387: in patched
+    with self.decoration_helper(patched,
+/usr/lib/python3.12/contextlib.py:137: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+/usr/lib/python3.12/unittest/mock.py:1369: in decoration_helper
+    arg = exit_stack.enter_context(patching)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/contextlib.py:526: in enter_context
+    result = _enter(cm)
+             ^^^^^^^^^^
+/usr/lib/python3.12/unittest/mock.py:1458: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/unittest/mock.py:1431: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'src.main' from '/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-journalisation/src/main.py'> does not have the attribute 'LogApiAdapter'
+_____________________ TestMain.test_main_with_sample_logs ______________________
+/usr/lib/python3.12/unittest/mock.py:1387: in patched
+    with self.decoration_helper(patched,
+/usr/lib/python3.12/contextlib.py:137: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+/usr/lib/python3.12/unittest/mock.py:1369: in decoration_helper
+    arg = exit_stack.enter_context(patching)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/contextlib.py:526: in enter_context
+    result = _enter(cm)
+             ^^^^^^^^^^
+/usr/lib/python3.12/unittest/mock.py:1458: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/unittest/mock.py:1431: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'src.main' from '/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-journalisation/src/main.py'> does not have the attribute 'LogApiAdapter'
+____________________ TestMain.test_main_publishes_messages _____________________
+/usr/lib/python3.12/unittest/mock.py:1387: in patched
+    with self.decoration_helper(patched,
+/usr/lib/python3.12/contextlib.py:137: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+/usr/lib/python3.12/unittest/mock.py:1369: in decoration_helper
+    arg = exit_stack.enter_context(patching)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/contextlib.py:526: in enter_context
+    result = _enter(cm)
+             ^^^^^^^^^^
+/usr/lib/python3.12/unittest/mock.py:1458: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/unittest/mock.py:1431: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'src.main' from '/media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/ms-journalisation/src/main.py'> does not have the attribute 'LogApiAdapter'
+- generated xml file: /media/robel/53e1aedc-bbb8-444c-ac36-5f9472e1cb342/projets/urbanhub/rapport_tests/ms-journalisation.xml -
+=========================== short test summary info ============================
+FAILED tests/unit/test_main.py::TestMain::test_main_execution - AttributeErro...
+FAILED tests/unit/test_main.py::TestMain::test_main_with_sample_logs - Attrib...
+FAILED tests/unit/test_main.py::TestMain::test_main_publishes_messages - Attr...
+ERROR tests/unit/adapters/test_adapters.py
+==================== 3 failed, 45 passed, 1 error in 1.48s =====================
+

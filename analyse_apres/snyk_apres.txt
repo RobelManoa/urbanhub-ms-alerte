@@ -1,0 +1,5 @@
+Rapport snyk (apres)
+Date: 2026-04-26T23:34:18+04:00
+
+CLI snyk non installee sur cette machine.
+Exit code: 127

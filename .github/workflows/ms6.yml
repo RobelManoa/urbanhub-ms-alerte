@@ -1,0 +1,81 @@
+name: UrbanHub MS6 - CI Global
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "ms-alerte-usager/**"
+      - "ms-analyse/**"
+      - "ms-collecte-iot/**"
+      - "ms-journalisation/**"
+      - ".github/workflows/ms6.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "ms-alerte-usager/**"
+      - "ms-analyse/**"
+      - "ms-collecte-iot/**"
+      - "ms-journalisation/**"
+      - ".github/workflows/ms6.yml"
+
+jobs:
+  microservices-pipeline:
+    name: "CI ${{ matrix.service }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - service: ms-alerte-usager
+            python: "3.12"
+          - service: ms-analyse
+            python: "3.12"
+          - service: ms-collecte-iot
+            python: "3.12"
+          - service: ms-journalisation
+            python: "3.12"
+
+    defaults:
+      run:
+        working-directory: ${{ matrix.service }}
+
+    steps:
+      - name: Checkout monorepo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: ${{ matrix.service }}/requirements.txt
+
+      - name: Verify requirements.txt exists
+        run: |
+          test -f requirements.txt || { echo "requirements.txt manquant pour ${{ matrix.service }}"; exit 1; }
+
+      - name: Verify Dockerfile exists
+        run: |
+          test -f Dockerfile || { echo "Dockerfile manquant pour ${{ matrix.service }}"; exit 1; }
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+      - name: Run unit tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}/${{ matrix.service }}
+        run: |
+          if [ -d tests ]; then
+            python -m pytest tests -q
+          elif [ -d test ]; then
+            python -m pytest test -q
+          else
+            python -m pytest -q
+          fi
+
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ matrix.service }}:ci .

@@ -1,0 +1,185 @@
+Rapport flake8 (apres)
+Date: 2026-04-26T23:34:16+04:00
+
+ms-alerte-usager/scripts/build.py:11:80: E501 line too long (97 > 79 characters)
+ms-alerte-usager/scripts/build.py:25:80: E501 line too long (90 > 79 characters)
+ms-alerte-usager/scripts/build.py:27:80: E501 line too long (84 > 79 characters)
+ms-alerte-usager/scripts/build.py:33:80: E501 line too long (82 > 79 characters)
+ms-alerte-usager/scripts/deploy.py:35:80: E501 line too long (84 > 79 characters)
+ms-alerte-usager/scripts/report_tests.py:5:1: F401 'pathlib.Path' imported but unused
+ms-alerte-usager/scripts/security_report.py:8:1: F401 'sys' imported but unused
+ms-alerte-usager/scripts/security_report.py:10:1: F401 'pathlib.Path' imported but unused
+ms-alerte-usager/scripts/security_report.py:52:80: E501 line too long (87 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:69:80: E501 line too long (84 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:99:80: E501 line too long (82 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:106:80: E501 line too long (88 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:137:80: E501 line too long (80 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:155:80: E501 line too long (83 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:171:80: E501 line too long (83 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:181:80: E501 line too long (99 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:199:80: E501 line too long (83 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:228:80: E501 line too long (82 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:247:80: E501 line too long (82 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:254:80: E501 line too long (81 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:279:80: E501 line too long (88 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:288:80: E501 line too long (80 > 79 characters)
+ms-alerte-usager/scripts/security_report.py:308:80: E501 line too long (92 > 79 characters)
+ms-alerte-usager/scripts/test.py:25:80: E501 line too long (126 > 79 characters)
+ms-alerte-usager/src/adapters/database/models.py:83:1: W293 blank line contains whitespace
+ms-alerte-usager/src/adapters/database/models.py:106:61: W292 no newline at end of file
+ms-alerte-usager/src/adapters/database/repository.py:4:80: E501 line too long (80 > 79 characters)
+ms-alerte-usager/src/adapters/database/repository.py:29:30: W292 no newline at end of file
+ms-alerte-usager/src/adapters/notification/notification_service.py:9:80: E501 line too long (80 > 79 characters)
+ms-alerte-usager/src/adapters/notification/notification_service.py:9:81: W292 no newline at end of file
+ms-alerte-usager/src/adapters/rabbitmq/consumer.py:53:34: W292 no newline at end of file
+ms-alerte-usager/src/application/process_alert_usecase.py:31:70: W292 no newline at end of file
+ms-alerte-usager/src/domain/entities.py:13:80: E501 line too long (84 > 79 characters)
+ms-alerte-usager/src/domain/entities.py:13:85: W292 no newline at end of file
+ms-alerte-usager/src/main.py:12:1: E402 module level import not at top of file
+ms-alerte-usager/src/main.py:13:1: E402 module level import not at top of file
+ms-alerte-usager/src/main.py:14:1: E402 module level import not at top of file
+ms-alerte-usager/src/main.py:15:1: E402 module level import not at top of file
+ms-alerte-usager/src/main.py:16:1: E402 module level import not at top of file
+ms-alerte-usager/src/main.py:18:80: E501 line too long (92 > 79 characters)
+ms-alerte-usager/src/main.py:31:31: W292 no newline at end of file
+ms-alerte-usager/src/ports/event_consumer_port.py:10:13: W292 no newline at end of file
+ms-alerte-usager/src/ports/notification_port.py:11:13: W292 no newline at end of file
+ms-alerte-usager/src/ports/repository_port.py:19:13: W292 no newline at end of file
+ms-alerte-usager/test/unit/test_process_alert_usecase.py:12:80: E501 line too long (86 > 79 characters)
+ms-alerte-usager/test/unit/test_rabbitmq_consumer.py:13:80: E501 line too long (90 > 79 characters)
+ms-alerte-usager/test/unit/test_rabbitmq_consumer.py:43:80: E501 line too long (81 > 79 characters)
+ms-alerte-usager/test/unit/test_rabbitmq_consumer.py:51:80: E501 line too long (81 > 79 characters)
+ms-alerte-usager/test/unit/test_repository.py:3:80: E501 line too long (80 > 79 characters)
+ms-analyse/src/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/adapters/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/adapters/api/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/adapters/api/schemas.py:36:1: W391 blank line at end of file
+ms-analyse/src/adapters/dashboard/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/adapters/database/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/adapters/database/repository.py:32:80: E501 line too long (83 > 79 characters)
+ms-analyse/src/adapters/rabbitmq/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/adapters/rabbitmq/consumer.py:8:80: E501 line too long (84 > 79 characters)
+ms-analyse/src/application/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/application/use_cases/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/domain/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/domain/entities.py:19:1: W391 blank line at end of file
+ms-analyse/src/domain/services.py:8:80: E501 line too long (85 > 79 characters)
+ms-analyse/src/domain/services.py:11:80: E501 line too long (83 > 79 characters)
+ms-analyse/src/domain/services.py:13:80: E501 line too long (87 > 79 characters)
+ms-analyse/src/domain/services.py:21:80: E501 line too long (99 > 79 characters)
+ms-analyse/src/domain/services.py:22:80: E501 line too long (96 > 79 characters)
+ms-analyse/src/domain/services.py:24:80: E501 line too long (91 > 79 characters)
+ms-analyse/src/domain/services.py:27:80: E501 line too long (93 > 79 characters)
+ms-analyse/src/domain/services.py:58:80: E501 line too long (96 > 79 characters)
+ms-analyse/src/domain/services.py:73:80: E501 line too long (83 > 79 characters)
+ms-analyse/src/domain/services.py:74:80: E501 line too long (87 > 79 characters)
+ms-analyse/src/domain/services.py:84:80: E501 line too long (99 > 79 characters)
+ms-analyse/src/domain/services.py:147:80: E501 line too long (97 > 79 characters)
+ms-analyse/src/domain/services.py:152:80: E501 line too long (104 > 79 characters)
+ms-analyse/src/domain/services.py:158:80: E501 line too long (95 > 79 characters)
+ms-analyse/src/domain/services.py:169:80: E501 line too long (80 > 79 characters)
+ms-analyse/src/domain/services.py:179:80: E501 line too long (80 > 79 characters)
+ms-analyse/src/main.py:14:80: E501 line too long (84 > 79 characters)
+ms-analyse/src/main.py:20:80: E501 line too long (91 > 79 characters)
+ms-analyse/src/ports/__init__.py:1:1: W391 blank line at end of file
+ms-analyse/src/ports/analysis_port.py:9:1: W391 blank line at end of file
+ms-analyse/tests/test_health.py:8:1: E402 module level import not at top of file
+ms-analyse/tests/test_health.py:10:1: E402 module level import not at top of file
+ms-analyse/tests/test_health.py:12:1: E302 expected 2 blank lines, found 1
+ms-analyse/tests/test_health.py:45:80: E501 line too long (89 > 79 characters)
+ms-analyse/tests/test_health.py:74:80: E501 line too long (104 > 79 characters)
+ms-analyse/tests/test_health.py:86:80: E501 line too long (93 > 79 characters)
+ms-analyse/tests/test_rabbitmq.py:43:80: E501 line too long (105 > 79 characters)
+ms-analyse/tests/test_rabbitmq.py:44:80: E501 line too long (84 > 79 characters)
+ms-analyse/tests/test_rabbitmq.py:58:80: E501 line too long (98 > 79 characters)
+ms-analyse/tests/test_rabbitmq.py:66:80: E501 line too long (106 > 79 characters)
+ms-analyse/tests/test_rabbitmq.py:73:80: E501 line too long (84 > 79 characters)
+ms-analyse/tests/test_rabbitmq.py:90:80: E501 line too long (99 > 79 characters)
+ms-analyse/tests/test_repository.py:21:80: E501 line too long (97 > 79 characters)
+ms-analyse/tests/test_repository.py:22:80: E501 line too long (99 > 79 characters)
+ms-analyse/tests/test_repository.py:49:80: E501 line too long (86 > 79 characters)
+ms-analyse/tests/test_schemas_and_use_case.py:5:80: E501 line too long (84 > 79 characters)
+ms-analyse/tests/test_schemas_and_use_case.py:31:80: E501 line too long (91 > 79 characters)
+ms-collecte-iot/conftest.py:7:1: W391 blank line at end of file
+ms-collecte-iot/src/__init__.py:1:1: W391 blank line at end of file
+ms-collecte-iot/src/adapters/__init__.py:1:1: W391 blank line at end of file
+ms-collecte-iot/src/adapters/database/__init__.py:1:1: W391 blank line at end of file
+ms-collecte-iot/src/adapters/rabbitmq/__init__.py:1:1: W391 blank line at end of file
+ms-collecte-iot/src/application/__init__.py:1:1: W391 blank line at end of file
+ms-collecte-iot/src/domain/__init__.py:1:1: W391 blank line at end of file
+ms-collecte-iot/src/main.py:10:1: E402 module level import not at top of file
+ms-collecte-iot/src/main.py:11:1: E402 module level import not at top of file
+ms-collecte-iot/src/main.py:12:1: E402 module level import not at top of file
+ms-collecte-iot/src/main.py:13:1: E402 module level import not at top of file
+ms-collecte-iot/src/ports/__init__.py:1:1: W391 blank line at end of file
+ms-collecte-iot/test/__init__.py:1:1: W391 blank line at end of file
+ms-collecte-iot/test/unit/__init__.py:1:1: W391 blank line at end of file
+ms-collecte-iot/test/unit/test_entities_and_error_paths.py:57:80: E501 line too long (84 > 79 characters)
+ms-collecte-iot/test/unit/test_main_and_ports.py:55:80: E501 line too long (82 > 79 characters)
+ms-collecte-iot/test/unit/test_rabbitmq_consumer.py:48:80: E501 line too long (81 > 79 characters)
+ms-collecte-iot/test/unit/test_rabbitmq_consumer.py:56:80: E501 line too long (81 > 79 characters)
+ms-collecte-iot/test/unit/test_repository_and_publisher.py:53:80: E501 line too long (81 > 79 characters)
+ms-collecte-iot/test/unit/test_repository_and_publisher.py:69:80: E501 line too long (82 > 79 characters)
+ms-journalisation/manage_tests.py:48:80: E501 line too long (81 > 79 characters)
+ms-journalisation/src/adapters/database/log_repository_adapter.py:96:80: E501 line too long (102 > 79 characters)
+ms-journalisation/src/adapters/database/log_repository_adapter.py:116:9: F401 'json' imported but unused
+ms-journalisation/src/adapters/database/log_validator_adapter.py:52:80: E501 line too long (87 > 79 characters)
+ms-journalisation/src/adapters/rabbitmq/log_consumer_adapter.py:6:1: F401 'json' imported but unused
+ms-journalisation/src/domain/log.py:66:80: E501 line too long (80 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:6:80: E501 line too long (99 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:11:1: F401 'datetime.datetime' imported but unused
+ms-journalisation/tests/unit/adapters/test_adapters.py:199:80: E501 line too long (88 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:200:80: E501 line too long (89 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:201:80: E501 line too long (89 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:379:80: E501 line too long (87 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:380:80: E501 line too long (88 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:395:80: E501 line too long (102 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:396:80: E501 line too long (103 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:411:80: E501 line too long (102 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:412:80: E501 line too long (103 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:426:1: W293 blank line contains whitespace
+ms-journalisation/tests/unit/adapters/test_adapters.py:429:80: E501 line too long (93 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:471:80: E501 line too long (88 > 79 characters)
+ms-journalisation/tests/unit/adapters/test_adapters.py:472:80: E501 line too long (89 > 79 characters)
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:5:1: F401 'datetime.datetime' imported but unused
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:6:1: F401 'unittest.mock.MagicMock' imported but unused
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:8:1: F401 'src.domain.log.Log' imported but unused
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:173:80: E501 line too long (80 > 79 characters)
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:174:80: E501 line too long (80 > 79 characters)
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:175:80: E501 line too long (80 > 79 characters)
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:190:80: E501 line too long (95 > 79 characters)
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:191:80: E501 line too long (96 > 79 characters)
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:192:80: E501 line too long (95 > 79 characters)
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:207:80: E501 line too long (80 > 79 characters)
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:208:80: E501 line too long (81 > 79 characters)
+ms-journalisation/tests/unit/application/test_process_log_use_case.py:209:80: E501 line too long (81 > 79 characters)
+ms-journalisation/tests/unit/domain/test_log.py:4:1: F401 'pytest' imported but unused
+ms-journalisation/tests/unit/domain/test_log.py:186:80: E501 line too long (80 > 79 characters)
+ms-journalisation/tests/unit/ports/test_ports.py:112:80: E501 line too long (86 > 79 characters)
+ms-journalisation/tests/unit/ports/test_ports.py:113:80: E501 line too long (87 > 79 characters)
+ms-journalisation/tests/unit/ports/test_ports.py:171:9: E306 expected 1 blank line before a nested definition, found 0
+ms-journalisation/tests/unit/ports/test_ports.py:173:1: W293 blank line contains whitespace
+ms-journalisation/tests/unit/ports/test_ports.py:234:1: W391 blank line at end of file
+ms-journalisation/tests/unit/test_main.py:4:1: F401 'pytest' imported but unused
+ms-journalisation/tests/unit/test_main.py:5:1: F401 'json' imported but unused
+ms-journalisation/tests/unit/test_main.py:6:1: F401 'unittest.mock.call' imported but unused
+ms-journalisation/tests/unit/test_main.py:19:73: W291 trailing whitespace
+ms-journalisation/tests/unit/test_main.py:29:80: E501 line too long (82 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:49:80: W291 trailing whitespace
+ms-journalisation/tests/unit/test_main.py:50:80: E501 line too long (81 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:58:80: E501 line too long (82 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:59:80: E501 line too long (87 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:60:80: E501 line too long (92 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:76:80: E501 line too long (81 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:76:82: W291 trailing whitespace
+ms-journalisation/tests/unit/test_main.py:77:80: E501 line too long (83 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:85:80: E501 line too long (82 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:86:80: E501 line too long (87 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:87:80: E501 line too long (92 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:91:80: E501 line too long (93 > 79 characters)
+ms-journalisation/tests/unit/test_main.py:93:1: W391 blank line at end of file
+src/validator.py:10:80: E501 line too long (89 > 79 characters)
+tests/test_validator.py:11:80: E501 line too long (85 > 79 characters)
+tests/test_validator.py:17:80: E501 line too long (85 > 79 characters)
+
+Exit code: 1
