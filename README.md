@@ -90,3 +90,26 @@ Documentation prete a publier sur GitHub Wiki/Pages (6 sections):
 - 4) Prerequis: `ms-alerte-usager/document/wiki/04-prerequis.md`
 - 5) Qualite et dette: `ms-alerte-usager/document/wiki/05-qualite-dette.md`
 - 6) Integration UrbanHub: `ms-alerte-usager/document/wiki/06-integration-urbanhub.md`
+
+## Declaration d'utilisation de l'IA
+
+Conformement aux consignes de l'epreuve, l'IA a ete utilisee uniquement comme assistance.
+
+### Outil IA utilise
+
+- GitHub Copilot
+
+### Parties concernees de l'epreuve
+
+- Aide a la structuration du pipeline CI global multi-microservices
+- Aide a la creation d'un validateur commun et de ses tests unitaires
+- Aide a la generation de rapports consolides (tests, couverture, lint, securite)
+- Aide a la redaction d'une synthese avant/apres
+
+### Prompts utilises (extraits)
+
+- dans ce projet, j'aimerai que tu me livres le pipeline de tous les microservices dans un fichier ms6.yml, cree moi aussi src/validator.py, tests/test_validator.py, fait une verification du Dockerfile (cree le si c'est manquant), requirements.txt
+- maintenant il me faut la synthese de tous les projets dans un fichier : synthese_avant_apres.md
+
+
+
