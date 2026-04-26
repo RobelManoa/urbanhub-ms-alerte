@@ -1,0 +1,49 @@
+name: MS Alerte Usager - CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths: ["ms-alerte-usager/**"]
+  pull_request:
+    branches: [main]
+    paths: ["ms-alerte-usager/**"]
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    env:
+      PYTHON_VERSION: "3.12.3"
+      PYTHONPATH: ${{ github.workspace }}/ms-alerte-usager
+    defaults:
+      run:
+        working-directory: ms-alerte-usager
+
+    steps:
+      - name: 1) Checkout du monorepo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 2) Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: 3) Exécuter le script de qualité (tests + lint)
+        run: |
+          python scripts/test.py
+
+      - name: 4) Analyse SonarQube
+        uses: SonarSource/sonarqube-scan-action@v6
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+        with:
+          projectBaseDir: ms-alerte-usager
+
+      - name: 5) Scan sécurité Snyk
+        uses: snyk/actions/python@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --file=ms-alerte-usager/requirements.txt --severity-threshold=high --fail-on=all
