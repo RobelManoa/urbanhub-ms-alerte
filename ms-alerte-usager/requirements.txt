@@ -3,13 +3,13 @@ psycopg2-binary
 sqlalchemy
 sqlalchemy-utils
 alembic
-python-dotenv
+python-dotenv==1.2.2
 pytest
 pytest-cov
 pytest-mock
-requests
-flask
-flask-cors
+requests==2.32.2
+flask==3.1.3
+flask-cors==6.0.0
 flask-jwt-extended
 flask-sqlalchemy
 flask-migrate
