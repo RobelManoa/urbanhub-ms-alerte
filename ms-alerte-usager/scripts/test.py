@@ -24,7 +24,7 @@ def main() -> int:
 
     run_cmd([sys.executable, "-m", "pip", "install", "-r", "requirements.txt", "-r", "requirements-dev.txt"], cwd=PROJECT_DIR)
 
-    if not args.skip-tests:
+    if not args.skip_tests:
         run_cmd(
             [
                 sys.executable,
@@ -40,7 +40,7 @@ def main() -> int:
             cwd=PROJECT_DIR,
         )
 
-    if not args.skip-lint:
+    if not args.skip_lint:
         run_cmd(
             [
                 sys.executable,
