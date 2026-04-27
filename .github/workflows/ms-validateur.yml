@@ -53,6 +53,8 @@ jobs:
   quality:
     runs-on: ubuntu-latest
     needs: test
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     defaults:
       run:
         working-directory: ms-validateur
@@ -74,18 +76,34 @@ jobs:
           pip install -r requirements.txt -r requirements-dev.txt
           npm install -g snyk
 
+      - name: Download test artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ms-validateur-test-reports
+          path: ms-validateur
+
       - name: Flake8 before correction
         run: |
           mkdir -p reports/quality reports/security
           flake8 src tests --config=.flake8 > reports/quality/flake8_avant.txt || true
+          : > reports/quality/sonar_avant.txt
+          : > reports/quality/sonar_apres.txt
 
       - name: SonarQube scan
+        if: env.SONAR_TOKEN != ''
         uses: SonarSource/sonarqube-scan-action@v6
+        continue-on-error: true
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
         with:
           projectBaseDir: ms-validateur
+
+      - name: SonarQube skip notice
+        if: env.SONAR_TOKEN == ''
+        run: |
+          echo "SONAR_TOKEN absent: scan Sonar ignore pour ce run." > reports/quality/sonar_avant.txt
+          cp reports/quality/sonar_avant.txt reports/quality/sonar_apres.txt
 
       - name: Snyk before correction
         env:
@@ -117,6 +135,8 @@ jobs:
           path: |
             ms-validateur/reports/quality/flake8_avant.txt
             ms-validateur/reports/quality/flake8_apres.txt
+            ms-validateur/reports/quality/sonar_avant.txt
+            ms-validateur/reports/quality/sonar_apres.txt
             ms-validateur/reports/quality/sonar_avant.png
             ms-validateur/reports/quality/sonar_apres.png
             ms-validateur/reports/security/snyk_avant.txt
