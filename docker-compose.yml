@@ -114,9 +114,26 @@ services:
     environment:
       DATABASE_URL: postgresql://user:password@analysis-db:5432/analysis
       RABBITMQ_HOST: rabbitmq
-      RABBITMQ_INPUT_QUEUE: collecte_queue
+      RABBITMQ_INPUT_QUEUE: validated_queue
       ENABLE_RABBITMQ_CONSUMER: "true"
     command: ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8003"]
+    restart: unless-stopped
+
+  ms-validateur:
+    build:
+      context: ./ms-validateur
+    container_name: ms-validateur
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "8006:8000"
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_INPUT_QUEUE: collecte_queue
+      RABBITMQ_OUTPUT_QUEUE: validated_queue
+      ENABLE_RABBITMQ_CONSUMER: "true"
+    command: ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
     restart: unless-stopped
 
   ms-journalisation:
