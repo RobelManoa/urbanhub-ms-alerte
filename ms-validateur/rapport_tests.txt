@@ -1,4 +1,4 @@
-..............                                                           [100%]
+..................                                                       [100%]
 ================================ tests coverage ================================
 _______________ coverage: platform linux, python 3.12.3-final-0 ________________
 
@@ -17,4 +17,4 @@ src/ports/publisher_port.py                        5      1    80%   8
 TOTAL                                            203     17    92%
 Coverage XML written to file coverage.xml
 Required test coverage of 80% reached. Total coverage: 91.63%
-14 passed in 2.65s
+18 passed in 2.97s

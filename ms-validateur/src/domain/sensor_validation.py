@@ -1,21 +1,10 @@
-from dataclasses import dataclass
 from datetime import datetime, timezone
 
-
-@dataclass(frozen=True)
-class SensorThreshold:
-    moderate: float
-    critical: float
-    unit: str
+from src.config.sensor_thresholds import SENSOR_THRESHOLDS
 
 
 class SensorValidationService:
-    thresholds = {
-        "co2": SensorThreshold(moderate=800, critical=1000, unit="ppm"),
-        "temperature": SensorThreshold(moderate=35, critical=40, unit="C"),
-        "noise": SensorThreshold(moderate=70, critical=85, unit="dB"),
-        "humidity": SensorThreshold(moderate=60, critical=75, unit="%"),
-    }
+    thresholds = SENSOR_THRESHOLDS
 
     def validate(self, sensor: str, value: float) -> dict:
         normalized_sensor = sensor.strip().lower()
@@ -25,7 +14,7 @@ class SensorValidationService:
         if not threshold or value < 0:
             return {
                 "valid": False,
-                "level": "unknown",
+                "level": "unknow",
                 "sensor": normalized_sensor,
                 "value": value,
                 "threshold": None,
@@ -43,7 +32,7 @@ class SensorValidationService:
             alert_threshold = threshold.critical
 
         return {
-            "valid": True,
+            "valid": level != "critical",
             "level": level,
             "sensor": normalized_sensor,
             "value": value,
