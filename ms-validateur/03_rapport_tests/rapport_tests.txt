@@ -1,10 +1,10 @@
-..................                                                       [100%]
+...................                                                      [100%]
 ================================ tests coverage ================================
 _______________ coverage: platform linux, python 3.12.3-final-0 ________________
 
 Name                                           Stmts   Miss  Cover
 ------------------------------------------------------------------
-src/adapters/api/routes.py                        18      0   100%
+src/adapters/api/routes.py                        19      0   100%
 src/adapters/api/schemas.py                       18      0   100%
 src/adapters/rabbitmq/consumer.py                 27      5    81%
 src/adapters/rabbitmq/publisher.py                20      0   100%
@@ -14,10 +14,11 @@ src/config/sensor_thresholds.py                    7      0   100%
 src/domain/entities.py                            27      0   100%
 src/domain/sensor_validation.py                   19      0   100%
 src/domain/services.py                            41      8    80%
-src/main.py                                       15      3    80%
+src/main.py                                        1      0   100%
 src/ports/publisher_port.py                        5      1    80%
+src/validator.py                                  27      3    89%
 ------------------------------------------------------------------
-TOTAL                                            209     17    92%
+TOTAL                                            223     17    92%
 Coverage XML written to file 03_rapport_tests/coverage.xml
-Required test coverage of 80% reached. Total coverage: 91.87%
-18 passed in 2.58s
+Required test coverage of 80% reached. Total coverage: 92.38%
+19 passed in 2.57s

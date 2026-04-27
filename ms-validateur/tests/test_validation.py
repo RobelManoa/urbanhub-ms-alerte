@@ -193,6 +193,15 @@ def test_sensor_validation_service_supports_additional_sensor_humidity() -> None
     assert result["threshold"] == 75
 
 
+def test_sensor_validation_service_supports_additional_sensor_pressure() -> None:
+    service = SensorValidationService()
+    result = service.validate(sensor="pressure", value=990)
+
+    assert result["valid"] is True
+    assert result["level"] == "normal"
+    assert result["threshold"] == 1000
+
+
 def test_validate_endpoint_matches_contract() -> None:
     with TestClient(app) as client:
         response = client.post("/validate", json={"sensor": "co2", "value": 500})

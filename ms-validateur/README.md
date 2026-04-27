@@ -70,6 +70,7 @@ Seuils de reference:
 - `temperature` : modere `35`, critique `40` (C)
 - `noise` : modere `70`, critique `85` (dB)
 - `humidity` : modere `60`, critique `75` (%)
+- `pressure` : modere `1000`, critique `1200` (hPa)
 
 Le conteneur expose le service sur le port `8000`.
 Dans le `docker-compose` global, il est publie sur le port `8006`.
@@ -80,6 +81,10 @@ Dans le `docker-compose` global, il est publie sur le port `8006`.
 pip install -r requirements.txt
 uvicorn src.main:app --host 0.0.0.0 --port 8000
 ```
+
+Point d'entree principal du microservice:
+
+- [src/validator.py](src/validator.py)
 
 ## Tests et couverture
 

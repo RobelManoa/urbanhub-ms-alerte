@@ -1,10 +1,11 @@
 from fastapi import APIRouter
 
-from src.adapters.api.schemas import SensorValidationRequest, TrafficValidationRequest
+from src.adapters.api.schemas import TrafficValidationRequest
 from src.adapters.rabbitmq.publisher import RabbitMQPublisher
 from src.application.validate_traffic_use_case import ValidateTrafficUseCase
 from src.domain.sensor_validation import SensorValidationService
 from src.domain.services import TrafficValidationService
+from src.validator import Sensordata
 
 
 router = APIRouter()
@@ -27,5 +28,5 @@ def validate_traffic(payload: TrafficValidationRequest) -> dict:
 
 
 @router.post("/validate")
-def validate_sensor(payload: SensorValidationRequest) -> dict:
+def validate_sensor(payload: Sensordata) -> dict:
     return sensor_validation_service.validate(sensor=payload.sensor, value=payload.value)

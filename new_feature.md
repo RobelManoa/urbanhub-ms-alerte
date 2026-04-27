@@ -86,3 +86,49 @@ exigence de maintenabilité :
     • une fonction ne doit pas avoir qu’une seule responsabilité – éviter les fonctions monolithiques
     • les noms de variables et de fonctions doivent être explicites
     • la complexité cyclonique de chaque fonction doit rester faible – sonarqube la mésure
+
+
+# Verification et séparation des livrables
+
+## L1 : Workflow GitHub Action + code sources
+
+fichier : ms-validateur.yml
+contenue attendu : workflow GitHub actions complets – 5 jobs séquentiels, déclencheurs push/PR sur paths ms-validateur-capteur/**, étape docker build + push vers ghcr.io
+format : .yml
+
+fichier : src/validator.py
+contenue attendu : code du microservices : classe sensordata (base model), dictionnaire THRESHOLDS avec 5 capteurs minimum, endpoint POST/validate retournant valid/level/threshold/timestamp en UTC
+format : .py
+
+fichier : tests/test_validator.py
+contenue attendue : 5 tests minimums pytest
+format : .py
+
+fichier : Dockerfile
+contenue attendue : Base python : 3.11-slim, COPY src/ et requirements.txt, pip install, EXPOSE 8000, CMD uvicorn
+format : dokerfile
+
+fichier : requirement.txt
+contenue attendue : fastapi, uvicorn, pydantic avec version fixées. Pytest, pytest-cov, coverage en dev dependencies
+format : .txt
+
+## L2 : Rapport de tests pytest + coverage
+fichier : rapport_tests.txt
+contenue : sortie console de pytest : nom de chaque test, statut PASSED/FAILED, durée d’execution, résumé final. Couverture globale afficher
+format : .txt
+
+fichier rapport_tests.xml
+contenue : format Junit XML – list des testcases avec classname, name, time, statut. Générer par junitxml
+format : .xml
+
+fichier coverage.xml
+contenue : format XML pour sonarqube – taux de couverture par ligne. Générer par --cov-report=xml
+format : .xml
+
+## L3a : Analyse quélité & sécurité avant correction
+## L3b : Analyse qualité & sécurité apres correction
+## L3c : Synthèse comparative avant / apres -obligatoire
+ce document PDF est le livrable central de l’évaluation, il doit contenir 2 pages
+- page 1 : rapport sonarqube avant et apres cote à cote – métrique comparées (bugsn code smells, dette technique, coverage). Tableau SNYK CVE : nom CVE | gravité | package | version vulnérable | version corriger | action appliquer
+
+- page 2 : analyse des balises sonarqube de niveau High et critical uniquement

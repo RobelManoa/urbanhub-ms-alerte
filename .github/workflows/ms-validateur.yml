@@ -5,11 +5,13 @@ on:
     branches: [ main, develop ]
     paths:
       - "ms-validateur/**"
+      - "ms-validateur-capteur/**"
       - ".github/workflows/ms-validateur.yml"
   pull_request:
     branches: [ main ]
     paths:
       - "ms-validateur/**"
+      - "ms-validateur-capteur/**"
       - ".github/workflows/ms-validateur.yml"
 
 jobs:
@@ -179,8 +181,26 @@ jobs:
           docker build -t "$IMAGE_NAME" ./ms-validateur
           docker push "$IMAGE_NAME"
 
+  verify-image:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compute lowercase image name
+        run: |
+          OWNER_LC="$(echo "${GITHUB_REPOSITORY_OWNER}" | tr '[:upper:]' '[:lower:]')"
+          echo "IMAGE_NAME=ghcr.io/${OWNER_LC}/ms-validateur:${GITHUB_SHA}" >> "$GITHUB_ENV"
+
       - name: Run container verification on port 8000
         run: |
+          docker pull "$IMAGE_NAME"
           docker run -d --name ms-validateur-check -p 8000:8000 "$IMAGE_NAME"
           for i in {1..30}; do
             if curl -fsS http://localhost:8000/health > /dev/null; then
@@ -193,7 +213,7 @@ jobs:
 
   deploy-staging:
     runs-on: ubuntu-latest
-    needs: build
+    needs: verify-image
 
     steps:
       - name: Checkout monorepo
@@ -201,7 +221,7 @@ jobs:
 
       - name: Start ms-validateur in compose
         run: |
-          docker compose up -d rabbitmq ms-validateur
+          docker compose up -d ms-validateur
 
       - name: Verify ms-validateur on port 8006
         run: |
