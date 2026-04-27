@@ -34,21 +34,30 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
+          pip install pytest pytest-cov coverage
 
-      - name: Run tests with coverage
+      - name: Run-tests
         run: |
-          pytest --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing --cov-fail-under=80 --junitxml=report_tests.xml | tee rapport_tests.txt
-          cp report_tests.xml rapport_test.xml
+          mkdir -p 03_rapport_tests
+          pytest tests \
+            --tb=short \
+            --junitxml=03_rapport_tests/rapport_tests.xml \
+            --cov=src \
+            --cov-report=term \
+            --cov-report=xml:03_rapport_tests/coverage.xml \
+            --cov-fail-under=80 \
+            2>&1 | tee 03_rapport_tests/rapport_tests.txt
+          cp 03_rapport_tests/rapport_tests.xml 03_rapport_tests/rapport_test.xml
 
       - name: Upload test reports
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: ms-validateur-test-reports
           path: |
-            ms-validateur/rapport_tests.txt
-            ms-validateur/report_tests.xml
-            ms-validateur/rapport_test.xml
-            ms-validateur/coverage.xml
+            ms-validateur/03_rapport_tests/rapport_tests.txt
+            ms-validateur/03_rapport_tests/rapport_tests.xml
+            ms-validateur/03_rapport_tests/rapport_test.xml
+            ms-validateur/03_rapport_tests/coverage.xml
 
   quality:
     runs-on: ubuntu-latest

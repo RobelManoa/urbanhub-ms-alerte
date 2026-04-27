@@ -59,3 +59,30 @@ POST/validate – exemple d’entrée / sortie
 entrée : {"sensor" : "co2", "value" : 500}
 sortie : {"valid" : true, "level" : "normal", "sensor" : "co2", "value" : 500, "threshold" : 800, "timestamp" : "2026-04-27T09:00Z"}
 
+# Phase de teste
+
+effectuer au minimum 4 teste dans tests/test_validator.py
+- test_normal : valeur < seuil modéré → level= "normal", valid= True
+- test_moderate : valeur entre seuil modéré et critique → level = "moderate", valid=True
+- test_critical : valeur ≥ seuil critique  → level = "critical", valid= False
+- test_unknow : capteur non répertorié → level = "unknow", valid=False 
+
+# Commande pytest + coverage à intégrer dans le job run-tests
+
+pip install pytest pytest-cov coverage
+
+pytest tests\
+	--tb=short
+	-- junitxml=03_rapport_tests/rapport_tests.xml
+	--cov=src \
+	--cov-report= term \
+	-- cov-report = xml:03_rapport_tests/coverage.xml
+	-- cov-fail-under=80 \ 2>&1 | tee 03_rapport_tests/rapport_tests.txt
+
+# optimisation des developpement et structuration du code sonarqube obligatoire
+
+exigence de maintenabilité : 
+    • structurer le code de façon modulaire : séparer la configuration des seuils, la logique de validation et les routes FastAPI en fonctions ou modules distincts
+    • une fonction ne doit pas avoir qu’une seule responsabilité – éviter les fonctions monolithiques
+    • les noms de variables et de fonctions doivent être explicites
+    • la complexité cyclonique de chaque fonction doit rester faible – sonarqube la mésure

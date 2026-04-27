@@ -72,7 +72,7 @@ def test_validate_endpoint_returns_enriched_payload() -> None:
     fake_use_case = Mock()
     fake_use_case.execute.return_value = fake_result
 
-    with patch("src.main.traffic_validation_use_case", fake_use_case):
+    with patch("src.adapters.api.routes.traffic_validation_use_case", fake_use_case):
         with TestClient(app) as client:
             response = client.post(
                 "/traffic/validate",
@@ -180,6 +180,7 @@ def test_sensor_validation_service_moderate_and_critical_levels() -> None:
     assert moderate["level"] == "moderate"
     assert moderate["threshold"] == 40
     assert critical["level"] == "critical"
+    assert critical["valid"] is False
     assert critical["threshold"] == 85
 
 
@@ -206,12 +207,12 @@ def test_validate_endpoint_matches_contract() -> None:
     assert payload["timestamp"].endswith("Z")
 
 
-def test_validate_endpoint_returns_unknown_for_unsupported_sensor() -> None:
+def test_validate_endpoint_returns_unknow_for_unsupported_sensor() -> None:
     with TestClient(app) as client:
         response = client.post("/validate", json={"sensor": "voc", "value": 42})
 
     assert response.status_code == 200
     payload = response.json()
     assert payload["valid"] is False
-    assert payload["level"] == "unknown"
+    assert payload["level"] == "unknow"
     assert payload["threshold"] is None

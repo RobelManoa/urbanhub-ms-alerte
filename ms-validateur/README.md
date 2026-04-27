@@ -58,6 +58,12 @@ Sortie:
 }
 ```
 
+Regles de validite:
+
+- `normal` et `moderate` donnent `valid: true`
+- `critical` donne `valid: false`
+- capteur non repertorie donne `level: "unknow"` et `valid: false`
+
 Seuils de reference:
 
 - `co2` : modere `800`, critique `1000` (ppm)
@@ -73,4 +79,21 @@ Dans le `docker-compose` global, il est publie sur le port `8006`.
 ```bash
 pip install -r requirements.txt
 uvicorn src.main:app --host 0.0.0.0 --port 8000
+```
+
+## Tests et couverture
+
+Commande recommandee:
+
+```bash
+mkdir -p 03_rapport_tests
+pytest tests \
+	--tb=short \
+	--junitxml=03_rapport_tests/rapport_tests.xml \
+	--cov=src \
+	--cov-report=term \
+	--cov-report=xml:03_rapport_tests/coverage.xml \
+	--cov-fail-under=80 \
+	2>&1 | tee 03_rapport_tests/rapport_tests.txt
+cp 03_rapport_tests/rapport_tests.xml 03_rapport_tests/rapport_test.xml
 ```
