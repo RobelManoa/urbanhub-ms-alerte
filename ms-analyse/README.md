@@ -1,6 +1,6 @@
 # ms-analyse
 
-`ms-analyse` est le microservice charge d'analyser les donnees trafic publiees par `ms-collecte-iot`.
+`ms-analyse` est le microservice charge d'analyser les donnees trafic validees par `ms-validateur`.
 
 Il recoit une fenetre de circulation normalisee via RabbitMQ, produit une analyse metier, republie les messages utiles sur RabbitMQ, persiste les analyses dashboard dans sa propre base PostgreSQL, et expose ces donnees via API REST.
 
@@ -45,7 +45,7 @@ Le projet suit une architecture hexagonale simple:
 
 ## Flux entrant
 
-Le message entrant est publie par `ms-collecte-iot` dans la queue `collecte_queue`.
+Le message entrant est publie par `ms-validateur` dans la queue `validated_queue`.
 
 Format attendu:
 
@@ -142,7 +142,7 @@ Variables d'environnement utiles:
 ```bash
 DATABASE_URL=postgresql://user:password@localhost:5436/analysis
 RABBITMQ_HOST=localhost
-RABBITMQ_INPUT_QUEUE=collecte_queue
+RABBITMQ_INPUT_QUEUE=validated_queue
 ENABLE_RABBITMQ_CONSUMER=true
 ```
 
