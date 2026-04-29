@@ -1,0 +1,42 @@
+ms-validateur/conftest.py:7:38: W292 no newline at end of file
+ms-validateur/src/adapters/api/routes.py:32:80: E501 line too long (89 > 79 characters)
+ms-validateur/src/adapters/api/routes.py:32:90: W292 no newline at end of file
+ms-validateur/src/adapters/api/schemas.py:28:80: E501 line too long (92 > 79 characters)
+ms-validateur/src/adapters/api/schemas.py:37:31: W292 no newline at end of file
+ms-validateur/src/adapters/rabbitmq/consumer.py:23:80: E501 line too long (100 > 79 characters)
+ms-validateur/src/adapters/rabbitmq/consumer.py:24:80: E501 line too long (96 > 79 characters)
+ms-validateur/src/adapters/rabbitmq/consumer.py:26:80: E501 line too long (107 > 79 characters)
+ms-validateur/src/adapters/rabbitmq/consumer.py:35:80: E501 line too long (95 > 79 characters)
+ms-validateur/src/adapters/rabbitmq/consumer.py:45:80: E501 line too long (102 > 79 characters)
+ms-validateur/src/adapters/rabbitmq/consumer.py:48:34: W292 no newline at end of file
+ms-validateur/src/adapters/rabbitmq/publisher.py:18:80: E501 line too long (95 > 79 characters)
+ms-validateur/src/adapters/rabbitmq/publisher.py:33:27: W292 no newline at end of file
+ms-validateur/src/application/validate_traffic_use_case.py:7:80: E501 line too long (103 > 79 characters)
+ms-validateur/src/application/validate_traffic_use_case.py:15:33: W292 no newline at end of file
+ms-validateur/src/config/sensor_thresholds.py:17:2: W292 no newline at end of file
+ms-validateur/src/domain/entities.py:53:23: W292 no newline at end of file
+ms-validateur/src/domain/sensor_validation.py:41:10: W292 no newline at end of file
+ms-validateur/src/domain/services.py:5:80: E501 line too long (80 > 79 characters)
+ms-validateur/src/domain/services.py:25:80: E501 line too long (82 > 79 characters)
+ms-validateur/src/domain/services.py:28:80: E501 line too long (96 > 79 characters)
+ms-validateur/src/domain/services.py:42:80: E501 line too long (83 > 79 characters)
+ms-validateur/src/domain/services.py:43:80: E501 line too long (92 > 79 characters)
+ms-validateur/src/domain/services.py:45:80: E501 line too long (95 > 79 characters)
+ms-validateur/src/domain/services.py:51:80: E501 line too long (99 > 79 characters)
+ms-validateur/src/domain/services.py:55:80: E501 line too long (90 > 79 characters)
+ms-validateur/src/domain/services.py:62:80: E501 line too long (84 > 79 characters)
+ms-validateur/src/domain/services.py:67:21: W292 no newline at end of file
+ms-validateur/src/main.py:1:1: F401 'src.validator.app' imported but unused
+ms-validateur/src/main.py:1:30: W292 no newline at end of file
+ms-validateur/src/ports/publisher_port.py:8:34: W292 no newline at end of file
+ms-validateur/src/validator.py:11:1: F401 'src.config.sensor_thresholds.SENSOR_THRESHOLDS as THRESHOLDS' imported but unused
+ms-validateur/src/validator.py:43:19: W292 no newline at end of file
+ms-validateur/tests/test_validation.py:75:80: E501 line too long (85 > 79 characters)
+ms-validateur/tests/test_validation.py:137:80: E501 line too long (102 > 79 characters)
+ms-validateur/tests/test_validation.py:147:80: E501 line too long (104 > 79 characters)
+ms-validateur/tests/test_validation.py:159:80: E501 line too long (103 > 79 characters)
+ms-validateur/tests/test_validation.py:187:80: E501 line too long (81 > 79 characters)
+ms-validateur/tests/test_validation.py:196:80: E501 line too long (81 > 79 characters)
+ms-validateur/tests/test_validation.py:207:80: E501 line too long (81 > 79 characters)
+ms-validateur/tests/test_validation.py:221:80: E501 line too long (80 > 79 characters)
+ms-validateur/tests/test_validation.py:227:40: W292 no newline at end of file

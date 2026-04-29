@@ -16,9 +16,9 @@ src/domain/sensor_validation.py                   19      0   100%
 src/domain/services.py                            41      8    80%
 src/main.py                                        1      0   100%
 src/ports/publisher_port.py                        5      1    80%
-src/validator.py                                  27      3    89%
+src/validator.py                                  28      3    89%
 ------------------------------------------------------------------
-TOTAL                                            223     17    92%
+TOTAL                                            224     17    92%
 Coverage XML written to file 03_rapport_tests/coverage.xml
-Required test coverage of 80% reached. Total coverage: 92.38%
-19 passed in 2.57s
+Required test coverage of 80% reached. Total coverage: 92.41%
+19 passed in 3.23s
