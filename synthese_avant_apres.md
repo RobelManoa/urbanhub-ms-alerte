@@ -9,6 +9,7 @@ Cette synthese couvre:
 - [ms-analyse](ms-analyse)
 - [ms-collecte-iot](ms-collecte-iot)
 - [ms-journalisation](ms-journalisation)
+- [ms-validateur](ms-validateur)
 - la couche monorepo et CI globale
 
 ## 2) Etat avant intervention
@@ -90,7 +91,7 @@ Le principal blocage qualite est sur [ms-journalisation](ms-journalisation):
 - erreur de collecte import dans [test_adapters.py](ms-journalisation/tests/unit/adapters/test_adapters.py)
 - echecs de tests dans [test_main.py](ms-journalisation/tests/unit/test_main.py)
 
-Securite: **VULNÉRABILITÉS CORRIGÉES** ✅
+Securite: **VULNÉRABILITÉS CORRIGÉES** 
 - Les 8 vulnérabilités Snyk détectées ont été remédiées via upgrade des dépendances
 - Voir [vulnerabilites_snyk_corrigees.md](analyse_apres/vulnerabilites_snyk_corrigees.md) pour le détail
 - Dépendances directes mises à jour:

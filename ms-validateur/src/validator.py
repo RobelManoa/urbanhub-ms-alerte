@@ -8,8 +8,10 @@ from pydantic import BaseModel, Field
 from src.adapters.rabbitmq.consumer import RabbitMQConsumer
 from src.adapters.rabbitmq.publisher import RabbitMQPublisher
 from src.application.validate_traffic_use_case import ValidateTrafficUseCase
-from src.config.sensor_thresholds import SENSOR_THRESHOLDS as THRESHOLDS
+from src.config.sensor_thresholds import SENSOR_THRESHOLDS
 from src.domain.services import TrafficValidationService
+
+THRESHOLDS = SENSOR_THRESHOLDS
 
 
 class Sensordata(BaseModel):

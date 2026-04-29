@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Synthese avant apres - ms-validateur</title>
+  <style>
+    body { font-family: Arial, sans-serif; font-size: 12px; line-height: 1.35; color: #111827; }
+    h1, h2 { color: #0f172a; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+    th, td { border: 1px solid #cbd5e1; padding: 6px; vertical-align: top; }
+    th { background: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  </style>
+</head>
+<body>
+  <h1>Synthese avant / apres - ms-validateur</h1>
+  <h2>Page 1 - Comparatif qualite et securite</h2>
+  <table>
+    <tr><th>Element</th><th>Avant</th><th>Apres</th></tr>
+    <tr><td>Tests automatises</td><td>A finaliser</td><td>19 tests passes</td></tr>
+    <tr><td>Couverture</td><td>Non garantie</td><td>92.41%, seuil 80% atteint</td></tr>
+    <tr><td>Architecture</td><td>Risque de logique monolithique</td><td>Configuration, domaine, routes et adapters separes</td></tr>
+    <tr><td>Flake8</td><td>Rapport flake8_avant.txt present</td><td>Rapport flake8_apres.txt present</td></tr>
+    <tr><td>SonarCloud</td><td>Capture sonar_avant.png a remplacer par capture dashboard</td><td>Capture sonar_apres.png a remplacer par capture dashboard</td></tr>
+    <tr><td>Snyk</td><td>Trace snyk_avant.txt presente, CLI absent localement</td><td>Scan complet attendu en CI avec SNYK_TOKEN</td></tr>
+  </table>
+  <h2>Tableau Snyk CVE</h2>
+  <table>
+    <tr><th>CVE</th><th>Gravite</th><th>Package</th><th>Version vulnerable</th><th>Version corrigee</th><th>Action appliquee</th></tr>
+    <tr><td>Aucune CVE locale exploitable</td><td>Non determinee</td><td>requirements.txt</td><td>Non determinee</td><td>Versions fixees</td><td>Executer Snyk en CI avec SNYK_TOKEN</td></tr>
+  </table>
+  <div class="page-break"></div>
+  <h2>Page 2 - Analyse SonarCloud High/Critical</h2>
+  <p>Les captures locales Sonar sont des placeholders. Le workflow execute le scan SonarCloud si SONAR_TOKEN est configure.</p>
+  <p>Points de vigilance High/Critical a verifier dans SonarCloud :</p>
+  <ul>
+    <li>complexite excessive dans TrafficValidationService.validate ;</li>
+    <li>duplication de regles entre validation capteur et validation trafic ;</li>
+    <li>erreurs non gerees dans les adapters RabbitMQ ;</li>
+    <li>couverture insuffisante sur les branches d'erreur ;</li>
+    <li>dette de maintenabilite sur les routes FastAPI si elles grossissent.</li>
+  </ul>
+  <p>Etat apres correction : seuils externalises, logique capteur isolee, logique trafic isolee, routes FastAPI minces, erreurs RabbitMQ couvertes par tests, couverture globale de 92.41%, superieure a 80%.</p>
+</body>
+</html>
