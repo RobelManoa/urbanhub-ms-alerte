@@ -12,6 +12,7 @@ La documentation principale reste organisee avec la methode Diataxis dans `ms-va
 - `04_snyk.md` : analyse cybersecurite Snyk.
 - `05_guide_prise_en_main.md` : guide de prise en main.
 - `06_evolutivite.md` : evolutivite et integration UrbanHub.
+- `07_guide_github_wiki.md` : guide de publication dans GitHub Wiki.
 
 ## Lien avec Diataxis
 

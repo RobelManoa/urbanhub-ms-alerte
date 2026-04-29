@@ -188,8 +188,13 @@ Une version de restitution au format attendu est disponible dans `ms-validateur/
 - [x] `04_snyk.md` : analyse cybersecurite Snyk approfondie.
 - [x] `05_guide_prise_en_main.md` : guide reproductible pour un nouveau developpeur.
 - [x] `06_evolutivite.md` : evolutivite et integration UrbanHub.
+- [x] `07_guide_github_wiki.md` : guide pour publier ces documents dans GitHub Wiki.
 
 Ces documents s'appuient sur la documentation Diataxis sans la remplacer.
+
+Livrable Wiki :
+
+- [x] `lien_wiki.txt` : lien public vers le GitHub Wiki.
 
 ## Points de verification finale
 
