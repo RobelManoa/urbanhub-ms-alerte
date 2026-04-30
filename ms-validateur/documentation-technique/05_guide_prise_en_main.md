@@ -108,3 +108,15 @@ curl http://localhost:8006/health
 | `tests/` | Tests unitaires et API. |
 | `Dockerfile` | Construction de l'image. |
 | `sonar-project.properties` | Configuration SonarCloud. |
+
+## 9. GitHub secrets
+
+Pour que le pipeline CI/CD fonctionne completement sur GitHub Actions, certains secrets doivent etre configures dans le repository.
+
+| Secret | Role | Ou le configurer |
+|---|---|---|
+| `SONAR_TOKEN` | Autorise le scan SonarCloud du microservice et l'envoi des resultats qualite. | GitHub repository -> `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`. |
+| `SNYK_TOKEN` | Autorise l'analyse Snyk des dependances Python et la generation des rapports de securite. | GitHub repository -> `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`. |
+| `GITHUB_TOKEN` | Permet au workflow de pousser l'image Docker vers GHCR. Ce secret est fourni automatiquement par GitHub Actions. | Aucune creation manuelle. Verifier seulement les permissions `packages: write` dans le workflow. |
+
+Apres ajout ou modification d'un secret, relancer le workflow pour verifier que les jobs `quality`, `build` et `deploy-staging` s'executent correctement.

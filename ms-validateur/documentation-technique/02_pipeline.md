@@ -8,6 +8,24 @@ Le pipeline du microservice est defini dans :
 
 Il se lance sur les modifications du dossier `ms-validateur/**`, du chemin `ms-validateur-capteur/**` et du fichier workflow lui-meme.
 
+## Declencheurs
+
+Le workflow est execute automatiquement par GitHub Actions selon les conditions suivantes.
+
+| Evenement | Branche | Paths surveilles | Role |
+|---|---|---|---|
+| `push` | `main` | `ms-validateur/**`, `ms-validateur-capteur/**`, `.github/workflows/ms-validateur.yml` | Lance le pipeline quand une modification est poussee sur la branche principale. |
+| `push` | `develop` | `ms-validateur/**`, `ms-validateur-capteur/**`, `.github/workflows/ms-validateur.yml` | Permet de verifier le microservice avant fusion vers `main`. |
+| `pull_request` | vers `main` | `ms-validateur/**`, `ms-validateur-capteur/**`, `.github/workflows/ms-validateur.yml` | Controle les changements avant acceptation dans la branche principale. |
+
+Le path principal attendu pour le microservice est :
+
+```text
+ms-validateur/**
+```
+
+Le path `ms-validateur-capteur/**` est conserve dans le workflow pour rester compatible avec l'intitule initial du livrable. Le fichier `.github/workflows/ms-validateur.yml` est aussi surveille pour relancer le pipeline lorsqu'on modifie la CI/CD elle-meme.
+
 ## Vue d'ensemble
 
 Le pipeline contient cinq jobs dans le fichier actuel :
